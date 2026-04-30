@@ -94,16 +94,43 @@ function color(L, YB, YBV, RG, RGV){
     var R=0; var G=0; var B=0;
     if(YB=="Y"&&RG=="R"){
         R=L;
-        if(YBV>=RGV){G=L.mul(("1").sub(RGV.div("2")));}
-        else{G=L.mul(("1").sub(RGV.add(YBV.div("2"))));}
-        B=L*(("1").sub(Math.max(RGV, YBV)));
+        if(greaterEqual(YBV, RGV)) G=L.mul(("1").sub(RGV.div("2"))); else G=L.mul(("1").sub(RGV.add(YBV.div("2"))));
+        B=L.mul(("1").sub(max(RGV, YBV)));
     }else if(YB=="Y"&&RG==""){
+        R=L;
+        G=L;
+        B=L.mul(("1").sub(YBV));
     }else if(YB=="Y"&&RG=="G"){
+        if(greaterEqual(YBV, RGV)) R=L.mul(("1").sub(RGV.div("2"))); else R=L.mul((("1").sub(RGV)).add(YBV.div("2")));
+        G=L;
+        B=L.mul(("1").sub(max(RGV, YBV)));
     }else if(YB==""&&RG=="R"){
+        R=L;
+        G=L.mul(("1").sub(RGV));
+        B=L.mul(("1").sub(RGV));
     }else if(YB==""&&RG==""){
+        R=L;
+        G=L;
+        B=L;
     }else if(YB==""&&RG=="G"){
+        R=L.mul(("1").sub(RGV));
+        G=L;
+        B=L.mul(("1").sub(RGV));
     }else if(YB=="B"&&RG=="R"){
+        if(greaterEqual(RGV, YBV)){R=L; B=L.mul((("1").sub(RGV)).add(YBV));}
+        else{R=L.mul((("1").sub(YBV)).add(RGV));}
+        G=L.mul(("1").sub(YBV.add(RGV)));
     }else if(YB=="B"&&RG==""){
+        R=L.mul(("1").sub(YBV));
+        G=L.mul(("1").sub(YBV));
+        B=L;
     }else if(YB=="B"&&RG=="G"){
+        if(greaterEqual(RGV, YBV)){G=L; B=L.mul((("1").sub(RGV)).add(YBV));}
+        else{G=L.mul((("1").sub(YBV)).add(RGV)); B=L;}
+        R=L.mul(("1").sub(YBV.add(RGV)));
     }
+    R=(R.mul("255")).round().valueOf(); G=(G.mul("255")).round().valueOf(); B=(B.mul("255")).round().valueOf();
+    return "rgb("+R+", "+G+", "+B+")";
+    function max(first, next){if(greaterEqual(first, next)) return first; else return next;}
+    function greaterEqual(first, next){if(first.compare(next)>=0) return true; else return false;} //greater than or equal to
 }
