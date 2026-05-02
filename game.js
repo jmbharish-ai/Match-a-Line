@@ -1,16 +1,16 @@
 var perfectColors=[
     color("1", "B", "1", "R", "1"),
-    color("1", "B", "1", "G", "1"),
-    color("1", "", "0", "", "0"),
-    color("1", "", "0", "R", "1"),
-    color("0", "", "0", "", "0"),
-    color("1", "B", "1", "", "0"),
-    color("1/2", "Y", "1", "R", "1"),
-    color("1/2", "", "0", "", "0"),
-    color("1", "Y", "1", "R", "1"),
-    color("1", "Y", "1", "", "0"),
-    color("1", "B", "1", "R", "1/2"),
-    color("1", "", "0", "G", "1")
+    "rgb(0, 255, 255)",
+    "rgb(255, 255, 255",
+    "rgb(255, 0, 0)",
+    "rgb(0, 0, 0)",
+    "rgb(0, 0, 255)",
+    "rgb(128, 64, 0)",
+    "rgb(128, 128, 128)",
+    "rgb(255, 128, 0)",
+    "rgb(255, 255, 0)",
+    "rgb(128, 0, 255)",
+    "rgb(0, 255, 0)"
 ];
 function randomPerfectColor(){
     return perfectColors[Math.floor(Math.random()*perfectColors.length)];
