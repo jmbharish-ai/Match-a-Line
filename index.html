@@ -52,7 +52,7 @@
         if(localStorage.getItem("you")===null)
             localStorage.setItem("you", "0");
         var boxes=["The World of Perfect Colors", "Meeting a Friend"];
-        var boxNumber=Number(localStorage.getItem("box"));
+        var boxNumber=Number(localStorage.getItem("you"));
         function setBox(box){
             boxNumber=box;
             document.getElementById("boxNumber").innerHTML=box+1;
